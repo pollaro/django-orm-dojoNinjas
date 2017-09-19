@@ -1,0 +1,37 @@
+Create 3 dojos:
+    In [3]: dojos.objects.create(name='CodingDojo Silicon Valley',city='Mountain View',state='CA')
+    Out[3]: <dojos: dojos object>
+
+    In [4]: dojos.objects.create(name='CodingDojo Seattle',city='Seattle',state='WA')
+    Out[4]: <dojos: dojos object>
+
+    In [5]: dojos.objects.create(name='CodingDojo New York',city='New York',state='NY')
+    Out[5]: <dojos: dojos object>
+
+Delete three dojos:
+    In [9]: dojos.objects.get(id=2).delete()
+    Out[9]: (1, {u'dojoNinjas.dojos': 1, u'dojoNinjas.ninjas': 0})
+
+    In [10]: dojos.objects.get(id=3).delete()
+    Out[10]: (1, {u'dojoNinjas.dojos': 1, u'dojoNinjas.ninjas': 0})
+
+    In [7]: dojos.objects.get(id=1).delete()
+    Out[7]: (1, {u'dojoNinjas.dojos': 1, u'dojoNinjas.ninjas': 0})
+
+Create 3 more dojos:
+    refer to first section
+
+Create 9 ninjas:
+    In [22]: ninjas.objects.create(first_name='hal',last_name='jordan',dojo_id=3)
+    Out[22]: <ninjas: ninjas object>
+
+Get all ninjas that go to dojo id #1:
+    In [24]: ninjas.objects.filter(dojo_id=1)
+
+Get all ninjas that go to dojo id #3:
+    In [25]: ninjas.objects.filter(dojo_id=3)
+
+Create a desc field and add to it
+    -> in models.py add: desc = models.TextField()
+    run python manage.py makemigrations; python manage.py migrate
+    d=dojos(id=1);d.name='Coding Dojo New York'; d.city='New York';d.state='NY';d.desc='Description'

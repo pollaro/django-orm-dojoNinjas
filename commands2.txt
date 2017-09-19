@@ -1,0 +1,58 @@
+Create 5 books with the following names: C sharp, Java, Python, PHP, Ruby
+    In [36]: book.objects.create(name='Python')
+    etc
+
+Create 5 authors
+    In [36]: author.objects.create(first_name='Mike')
+    etc
+
+Create new field
+    In models.py -> notes=models.TextField()
+
+Change the name of the 5th book to C#
+    In [36]: b=book.objects.get(id=5)
+    In [37]: b.name='C#'
+    In [37]: b.save()
+
+Change the first_name of the 5th author to Ketul
+    In [37]: a=author.objects.get(id=5)
+    In [38]: a.first_name='Ketul'
+    In [38]: a.save()
+
+Assign the first author to the first 2 books
+    In [38]: a=author.objects.get(id=1)
+    In [39]: a.books.set([1,2])
+    In [35]: a.save()
+
+Assign the second author to the first 3 books
+    In [39]: a=author.objects.get(id=2)
+    In [40]: a.books.set([1,2,3])
+    In [41]: a.save()
+
+Assign the third author to the first 4 books
+    In [42]: a=author.objects.get(id=3)
+    In [43]: a.books.set([1,2,3,4])
+    In [44]: a.save()
+
+Assign the fourth author to the first 5 books (or in other words, all the books)
+    In [45]: a=author.objects.get(id=4)
+    In [48]: a.books.set([1,2,3,4,5])
+    In [49]: a.save()
+
+For the 3rd book, retrieve all the authors
+    In [59]: aa=book.objects.get(id=3).authors.all()
+
+For the 3rd book, remove the first author
+    In [64]: test=book.objects.get(id=3).authors.first()
+    In [67]: test.delete()
+
+For the 2nd book, add the 5th author as one of the authors
+    In [75]: b=book.objects.get(id=2)
+    In [77]: b.authors.add(5)
+    In [78]: b.save()
+
+Find all the books that the 3rd author is part of
+    In [79]: test=author.objects.get(id=3).books.all()
+
+Find all the books that the 2nd author is part of
+    DoesNotExist: author matching query does not exist.
